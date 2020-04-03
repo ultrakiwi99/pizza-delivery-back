@@ -42,6 +42,14 @@ class Product
         $this->id = $id ?? Id::next()->value();
     }
 
+    public static function fromDetails(string $name, float $price): Product
+    {
+        $product = new self();
+        $product->setName($name);
+        $product->setPrice($price);
+        return $product;
+    }
+
     /**
      * @return int
      */

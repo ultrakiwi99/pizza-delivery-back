@@ -26,25 +26,13 @@ class Order
      */
     private $date;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\OneToOne(targetEntity="Client")
+     * @ORM\JoinColumn(name="client_id", referencedColumnName="id")
+     * @var Client
      */
-    private $clientName;
-    /**
-     * @ORM\Column(type="string")
-     */
-    private $contactPhone;
-    /**
-     * @ORM\Column(type="string")
-     */
-    private $contactEmail;
-    /**
-     * @ORM\Column(type="string")
-     */
-    private $deliveryAddress;
+    private $client;
     /**
      * @ORM\OneToMany(targetEntity="OrderProduct", mappedBy="product")
      */
     private $orderProducts;
-
-
 }

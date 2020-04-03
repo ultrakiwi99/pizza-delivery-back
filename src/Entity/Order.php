@@ -45,4 +45,6 @@ class Order
      * @ORM\OneToMany(targetEntity="OrderProduct", mappedBy="product")
      */
     private $orderProducts;
+
+
 }

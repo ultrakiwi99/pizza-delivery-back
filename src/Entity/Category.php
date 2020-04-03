@@ -35,7 +35,7 @@ class Category
     public function __construct(int $id = null)
     {
         $this->products = new ArrayCollection();
-        $this->id = $id ?? Id::next();
+        $this->id = $id ?? Id::next()->value();
     }
 
     /**

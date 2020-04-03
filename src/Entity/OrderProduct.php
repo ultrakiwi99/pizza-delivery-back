@@ -3,7 +3,6 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -37,13 +36,4 @@ class OrderProduct
      * @ORM\Column(type="float")
      */
     private $qty;
-    /**
-     * @ORM\OneToMany(targetEntity="Addition")
-     */
-    private $selectedAdditions;
-
-    public function __construct()
-    {
-        $this->selectedAdditions = new ArrayCollection();
-    }
 }

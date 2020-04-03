@@ -82,4 +82,9 @@ class Category
     {
         $this->products->removeElement($product);
     }
+
+    public function __toString()
+    {
+        return $this->name();
+    }
 }

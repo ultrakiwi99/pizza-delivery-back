@@ -3,6 +3,7 @@
 
 namespace App\Entity;
 
+use App\Values\Id;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -36,10 +37,9 @@ class Product
      */
     private $category;
 
-    public function __construct(int $id, string $name)
+    public function __construct(int $id = null)
     {
-        $this->id = $id;
-        $this->name = $name;
+        $this->id = $id ?? Id::next()->value();
     }
 
     /**
@@ -79,7 +79,7 @@ class Product
      */
     public function setPrice(float $price): void
     {
-        $this->price = $price;
+        $this->price = round($price, 2);
     }
 
     /**
@@ -87,6 +87,26 @@ class Product
      */
     public function category(): ?Category
     {
-        return $this->category();
+        return $this->category;
+    }
+
+    /**
+     * @param Category $category
+     */
+    public function setCategory(Category $category): void
+    {
+        $category->addProduct($this);
+        $this->category = $category;
+    }
+
+    public function removeCategory(Category $category): void
+    {
+        $category->removeProduct($this);
+        $this->category = null;
+    }
+
+    public function __toString()
+    {
+        return $this->name();
     }
 }

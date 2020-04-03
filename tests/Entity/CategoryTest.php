@@ -18,9 +18,10 @@ class CategoryTest extends TestCase
         self::assertEquals($id, $category->id());
         self::assertEquals($categoryName, $category->name());
 
-        $category->addProduct(
-            $testProduct = new Product($productId = Id::next()->value(), 'Test product')
-        );
+        $testProduct = new Product($productId = Id::next()->value());
+        $testProduct->setName('Test Product');
+
+        $category->addProduct($testProduct);
 
         $categoryProduct = $category->products()[0];
 

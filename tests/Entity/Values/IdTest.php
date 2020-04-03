@@ -2,15 +2,11 @@
 
 namespace App\Tests\Entity\Values;
 
-use App\Entity\Values\Id;
-use Assert\AssertionFailedException;
+use App\Values\Id;
 use PHPUnit\Framework\TestCase;
 
 class IdTest extends TestCase
 {
-    /**
-     * @throws AssertionFailedException
-     */
     public function testValue()
     {
         $id = new Id($idValue = 12345);

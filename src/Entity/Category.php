@@ -3,16 +3,17 @@
 
 namespace App\Entity;
 
+use App\Values\Id;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Product
+ * Category
  *
  * @ORM\Entity()
- * @ORM\Table(name="products")
- * @package App\Entity
+ * @ORM\Table(name="Categories")
  */
-class Product
+class Category
 {
     /**
      * @ORM\Id
@@ -27,19 +28,14 @@ class Product
      */
     private $name;
     /**
-     * @ORM\Column(type="float")
-     * @var float
+     * @ORM\OneToMany(targetEntity="Product", mappedBy="category")
      */
-    private $price;
-    /**
-     * @ORM\ManyToOne(targetEntity="Category", inversedBy="products")
-     */
-    private $category;
+    private $products;
 
-    public function __construct(int $id, string $name)
+    public function __construct(int $id = null)
     {
-        $this->id = $id;
-        $this->name = $name;
+        $this->products = new ArrayCollection();
+        $this->id = $id ?? Id::next();
     }
 
     /**
@@ -67,26 +63,23 @@ class Product
     }
 
     /**
-     * @return float
+     * @return array|Product[]
      */
-    public function price(): ?float
+    public function products(): array
     {
-        return $this->price;
+        return $this->products->toArray();
     }
 
     /**
-     * @param float $price
+     * @param Product $product
      */
-    public function setPrice(float $price): void
+    public function addProduct(Product $product): void
     {
-        $this->price = $price;
+        $this->products->add($product);
     }
 
-    /**
-     * @return Category|null
-     */
-    public function category(): ?Category
+    public function removeProduct(Product $product): void
     {
-        return $this->category();
+        $this->products->removeElement($product);
     }
 }

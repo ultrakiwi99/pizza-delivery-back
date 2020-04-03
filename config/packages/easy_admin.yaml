@@ -1,0 +1,4 @@
+easy_admin:
+  entities:
+    - App\Entity\Order
+    - App\Entity\Product

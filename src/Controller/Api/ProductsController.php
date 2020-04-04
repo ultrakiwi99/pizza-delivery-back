@@ -30,7 +30,9 @@ class ProductsController extends AbstractController
         /** @var Category $category */
         foreach ($categories as $category) {
             $categoryInfo = [];
+
             $categoryInfo['name'] = $category->name();
+
             foreach ($category->products() as $product) {
                 $categoryInfo['products'][] = [
                     'name' => $product->name(),

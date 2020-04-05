@@ -36,6 +36,16 @@ class Product
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="products")
      */
     private $category;
+    /**
+     * @ORM\Column(type="string")
+     * @var string
+     */
+    private $imageFileName;
+    /**
+     * @ORM\Column(type="string")
+     * @var string
+     */
+    private $description;
 
     public function __construct(int $id = null)
     {
@@ -116,5 +126,37 @@ class Product
     public function __toString()
     {
         return $this->name();
+    }
+
+    /**
+     * @return string
+     */
+    public function imageFileName(): string
+    {
+        return $this->imageFileName;
+    }
+
+    /**
+     * @param string $imageFileName
+     */
+    public function setImageFileName(string $imageFileName): void
+    {
+        $this->imageFileName = $imageFileName;
+    }
+
+    /**
+     * @return string
+     */
+    public function description(): string
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription(string $description): void
+    {
+        $this->description = $description;
     }
 }

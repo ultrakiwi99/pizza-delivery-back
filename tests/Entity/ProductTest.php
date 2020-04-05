@@ -14,9 +14,13 @@ class ProductTest extends TestCase
     {
         $product = new Product($productId = Id::next()->value());
         $product->setName($productName = 'Test Product');
+        $product->setDescription($description = 'Test Description');
+        $product->setImageFileName($file = 'image.jpg');
 
         self::assertEquals($productId, $product->id());
         self::assertEquals($productName, $product->name());
+        self::assertEquals($description, $product->description());
+        self::assertEquals($file, $product->imageFileName());
 
         $product->setPrice(2.33);
         self::assertEquals(2.33, $product->price());

@@ -37,7 +37,9 @@ class ProductsController extends AbstractController
                 $categoryInfo['products'][] = [
                     'name' => $product->name(),
                     'priceEur' => (new Euro($product->price()))->value(),
-                    'priceUsd' => (new Usd($product->price()))->value()
+                    'priceUsd' => (new Usd($product->price()))->value(),
+                    'description' => $product->description(),
+                    'image' => $product->imageFileName()
                 ];
             }
 

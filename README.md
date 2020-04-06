@@ -1,4 +1,4 @@
-# pizza-front
+# pizza-back
 
 ## Project setup
 ```

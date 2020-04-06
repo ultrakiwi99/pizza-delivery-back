@@ -131,7 +131,7 @@ class Product
     /**
      * @return string
      */
-    public function imageFileName(): string
+    public function imageFileName(): ?string
     {
         return $this->imageFileName;
     }
@@ -147,7 +147,7 @@ class Product
     /**
      * @return string
      */
-    public function description(): string
+    public function description(): ?string
     {
         return $this->description;
     }

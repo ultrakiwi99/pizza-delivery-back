@@ -5,7 +5,7 @@
 composer install
 ```
 
-### Server for development
+### Local live server
 ```
 symfony server:start
 

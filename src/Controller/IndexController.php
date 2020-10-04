@@ -17,6 +17,6 @@ class IndexController extends AbstractController
      */
     public function index(): Response
     {
-        return new RedirectResponse('/admin');
+        return $this->json(['status' => 'Path not exists.']);
     }
 }

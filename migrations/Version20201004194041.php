@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20201004143837 extends AbstractMigration
+final class Version20201004194041 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -19,15 +19,14 @@ final class Version20201004143837 extends AbstractMigration
 
     public function up(Schema $schema): void
     {
-       $this->addSql('CREATE TABLE IF NOT EXISTS products (
-           products_id string not null,
-           product_name string not null,
-           product_description string,
-           price_cents int not null
+       $this->addSql('CREATE TABLE IF NOT EXISTS categories (
+           category_id string not null,
+           category_name string not null,
+           category_description string
        )');
-       $this->addSql('CREATE TABLE IF NOT EXISTS instock (
+       $this->addSql('CREATE TABLE IF NOT EXISTS product_to_categories (
            product_id string not null,
-           instock int not null
+           category_id string int not null
        )');
     }
 
